@@ -16,7 +16,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
-    public static StackPane root;
+
     public static void main(String[] args) {
         launch();
     }
@@ -24,7 +24,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        root = fxmlLoader.load();
+        StackPane root = fxmlLoader.load();
         double arcRadius = 250.0;
         Rectangle rectangle = new Rectangle(145, 140);
         rectangle.setArcWidth(arcRadius);
@@ -34,6 +34,7 @@ public class HelloApplication extends Application {
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
+        HelloController.myStage = stage;
         AppAnimation.wavyCircles(root);
     }
 }
